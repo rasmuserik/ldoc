@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- node
+deploy:
+  provider: npm
+  email: npmjs@solsort.com
+  api_key:
+    secure: Lyu37JaxOZuvuvmm7VJsVf+pfjWez+DiFCmCqe0Khgf5kGjsPFI3Ovk1dmlvLK8H4Q2zJTXXXQ/mWicOPKFHXoa9wKifeCeisKf4oTh6apZOMtWYYSLVUkLTKc/D5D296nDYW1v60IiYrgd8tVGxdRp3F1A0LX6E6FEjSNv2HHOlRpcC/fCf/NQ1pxYpldFUds0QwFQJnrASB2Q8J91fxZiPc15CxCDaGhambh1YM67TkHjmDDx5384xRS2ZMa+Ivkp8rT27Jm1/CP1TuSpROzLhNjWUXmLHxN8JvHdgns1u0jRChjeyh8qQvKVfat0acglTAdlGUMRaNKt+Qxg4PH2bRCleB3HJizQ6R8oEsMRCKYsUfM7RGkkj5H5zq8ona8abu2AzyFYYxln/tEUXB/zQev4ITEPvi7KCugP6WeUge95kAGVIILDuGQoVA6x7cCrGcv6eWi9j3BL4BPuwluh5FHN0I7pyjqX5MiV2JuLHd6K/t5VYv8jSLubpf+rFhih1VT68zqQSdWJiW4tZSEB/gZWG/NbEJhGAPv+EsddpcVN+zBRIEdxl/nrczEW3Uvvu5S2TZrds2T57/drPumC2mm7ZmvXdkUlWAnHg0A/3B5kpeGpIG7b7VXOzb8OJQj92OYd0FDEKvoUm7gOLNJ4Wzb/QL3rKqHYIykhtWg4=
+  on:
+    repo: solsort/ldoc
