@@ -2857,7 +2857,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 // Automatically generate documentation from a literate NPM module.
 //
-// I.e. to make a webpage for the module 'solsort-util', write the code as literate code, and add a html-file like:
+// I.e. to make a webpage for the module `solsort-util`, write the code as literate code, and add a html-file like:
 // ```
 // <!DOCTYPE html>
 // <html>
@@ -2869,7 +2869,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 // ```
 //
+// ## Actual source code
+//
 
+
+let style = `<style>
+div {
+  font-family: sans-serif;
+}
+.ldocSource {
+  width: 60ex;
+}
+pre,code {
+  background: #ddd;
+}
+pre {
+  margin: 2ex 0ex 2ex 0ex;
+}
+</style>`
 
 window.ldoc = async function(moduleName, elem) {
   if(!elem) {
@@ -2896,7 +2913,9 @@ window.ldoc = async function(moduleName, elem) {
     /\n *\/\/ ?/g, '\n'
   );
 
-  var html = (new __WEBPACK_IMPORTED_MODULE_0_showdown__["Converter"]()).makeHtml(mainSrc);
+  var html = 
+    style +
+    `<div class=ldocSource>${(new __WEBPACK_IMPORTED_MODULE_0_showdown__["Converter"]()).makeHtml(mainSrc)}</div>`;
   console.log(pkg, html);
 
   elem.innerHTML = html;

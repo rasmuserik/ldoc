@@ -1,6 +1,6 @@
 {
   "name": "ldoc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "icon": "icon.png",
   "main": "ldoc.js",
