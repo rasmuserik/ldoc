@@ -64,7 +64,7 @@ window.ldoc = async function(moduleName, elem) {
   var html = 
     style +
     `<div class=ldocSource>${(new Converter()).makeHtml(mainSrc)}</div>`;
-  console.log(pkg, html);
+  //console.log(pkg, html);
 
   elem.innerHTML = html;
 }
