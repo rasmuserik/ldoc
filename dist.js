@@ -2853,6 +2853,8 @@ if (typeof module !== 'undefined' && module.exports) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_showdown__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_showdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_showdown__);
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 // # Literate documentation for NPM modules
 //
 // Automatically generate documentation from a literate NPM module.
@@ -2886,46 +2888,48 @@ pre,code {
 pre {
   margin: 2ex 0ex 2ex 0ex;
 }
-</style>`
+</style>`;
 
-window.ldoc = async function(moduleName, elem) {
-  if(!elem) {
-    elem = document.createElement('div');
-    document.body.appendChild(elem);
-  }
+window.ldoc = (() => {
+  var _ref = _asyncToGenerator(function* (moduleName, elem) {
+    let unpkg = (() => {
+      var _ref2 = _asyncToGenerator(function* (file) {
+        try {
+          if (moduleName) {
+            file = 'https://unpkg.com/' + moduleName + '/' + file;
+          }
+          file = yield fetch(file);
+          return yield file.text();
+        } catch (e) {
+          return undefined;
+        }
+      });
 
-  async function unpkg(file) {
-    try {
-      if(moduleName) {
-        file = 'https://unpkg.com/' + moduleName + '/' + file
-      }
-      file = await fetch(file);
-      return await file.text();
-    } catch(e) {
-      return undefined;
+      return function unpkg(_x3) {
+        return _ref2.apply(this, arguments);
+      };
+    })();
+
+    if (!elem) {
+      elem = document.createElement('div');
+      document.body.appendChild(elem);
     }
-  }
 
-  var pkg = JSON.parse(await unpkg('package.json'));
-  var travis = await unpkg('.travis.yml');
-  var mainSrc = await unpkg(pkg.main);
-  mainSrc = ('\n' + mainSrc).replace(
-    /\n/g, '\n    '
-  )
-    .replace(
-    /\n *\/\/ ?/g, '\n'
-  );
+    var pkg = JSON.parse((yield unpkg('package.json')));
+    var travis = yield unpkg('.travis.yml');
+    var mainSrc = yield unpkg(pkg.main);
+    mainSrc = ('\n' + mainSrc).replace(/\n/g, '\n    ').replace(/\n *\/\/ ?/g, '\n');
 
-  var html = 
-    style +
-    `<div class=ldocSource>${(new __WEBPACK_IMPORTED_MODULE_0_showdown__["Converter"]()).makeHtml(mainSrc)}</div>`;
-  console.log(pkg, html);
+    var html = style + `<div class=ldocSource>${new __WEBPACK_IMPORTED_MODULE_0_showdown__["Converter"]().makeHtml(mainSrc)}</div>`;
+    console.log(pkg, html);
 
-  elem.innerHTML = html;
-}
+    elem.innerHTML = html;
+  });
 
-
-
+  return function (_x, _x2) {
+    return _ref.apply(this, arguments);
+  };
+})();
 
 /***/ })
 /******/ ]);
