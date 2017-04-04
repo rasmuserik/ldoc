@@ -2878,10 +2878,10 @@ div {
   font-family: sans-serif;
 }
 .ldocSource {
-  width: 60ex;
+  width: 72ex;
 }
 pre,code {
-  background: #ddd;
+  background: #eee;
 }
 pre {
   margin: 2ex 0ex 2ex 0ex;
@@ -2896,7 +2896,10 @@ window.ldoc = async function(moduleName, elem) {
 
   async function unpkg(file) {
     try {
-      file = await fetch('https://unpkg.com/' + moduleName + '/' + file);
+      if(moduleName) {
+        file = 'https://unpkg.com/' + moduleName + '/' + file
+      }
+      file = await fetch(file);
       return await file.text();
     } catch(e) {
       return undefined;
