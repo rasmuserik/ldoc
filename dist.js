@@ -2921,7 +2921,7 @@ window.ldoc = (() => {
     mainSrc = ('\n' + mainSrc).replace(/\n/g, '\n    ').replace(/\n *\/\/ ?/g, '\n');
 
     var html = style + `<div class=ldocSource>${new __WEBPACK_IMPORTED_MODULE_0_showdown__["Converter"]().makeHtml(mainSrc)}</div>`;
-    console.log(pkg, html);
+    //console.log(pkg, html);
 
     elem.innerHTML = html;
   });
