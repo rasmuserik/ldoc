@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -2859,13 +2869,14 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 // Automatically generate documentation from a literate NPM module.
 //
+// Loads `./package.json`, and derrives information from there.
+//
 // I.e. to make a webpage for the module `solsort-util`, write the code as literate code, and add a html-file like:
 // ```
 // <!DOCTYPE html>
 // <html>
 //   <body>
 //     <script src=https://unpkg.com/ldoc></script>
-//     <script>ldoc('solsort-util');</script>
 //   </body>
 // </html>
 //
@@ -2888,49 +2899,42 @@ pre,code {
 pre {
   margin: 2ex 0ex 2ex 0ex;
 }
-</style>`;
-
-window.ldoc = (() => {
-  var _ref = _asyncToGenerator(function* (moduleName, elem) {
-    let unpkg = (() => {
-      var _ref2 = _asyncToGenerator(function* (file) {
-        try {
-          if (moduleName) {
-            file = 'https://unpkg.com/' + moduleName + '/' + file;
-          }
-          file = yield fetch(file);
-          return yield file.text();
-        } catch (e) {
-          return undefined;
+</style>`(_asyncToGenerator(function* () {
+  let unpkg = (() => {
+    var _ref2 = _asyncToGenerator(function* (file) {
+      try {
+        if (moduleName) {
+          file = 'https://unpkg.com/' + moduleName + '/' + file;
         }
-      });
+        file = yield fetch(file);
+        return yield file.text();
+      } catch (e) {
+        return undefined;
+      }
+    });
 
-      return function unpkg(_x3) {
-        return _ref2.apply(this, arguments);
-      };
-    })();
+    return function unpkg(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  })();
 
-    if (!elem) {
-      elem = document.createElement('div');
-      document.body.appendChild(elem);
-    }
+  if (!elem) {
+    elem = document.createElement('div');
+    document.body.appendChild(elem);
+  }
 
-    var pkg = JSON.parse((yield unpkg('package.json')));
-    var travis = yield unpkg('.travis.yml');
-    var mainSrc = yield unpkg(pkg.main);
-    mainSrc = ('\n' + mainSrc).replace(/\n/g, '\n    ').replace(/\n *\/\/ ?/g, '\n');
+  var pkg = JSON.parse((yield unpkg('package.json')));
+  var travis = yield unpkg('.travis.yml');
+  var mainSrc = yield unpkg(pkg.ldoc || pkg.main);
+  mainSrc = ('\n' + mainSrc).replace(/\n/g, '\n    ').replace(/\n *\/\/ ?/g, '\n');
 
-    var html = style + `<div class=ldocSource>${new __WEBPACK_IMPORTED_MODULE_0_showdown__["Converter"]().makeHtml(mainSrc)}</div>`;
-    //console.log(pkg, html);
+  var html = style + `<div class=ldocSource>${new __WEBPACK_IMPORTED_MODULE_0_showdown__["Converter"]().makeHtml(mainSrc)}</div>`;
+  //console.log(pkg, html);
 
-    elem.innerHTML = html;
-  });
-
-  return function (_x, _x2) {
-    return _ref.apply(this, arguments);
-  };
-})();
+  elem.innerHTML = html;
+}))();
 
 /***/ })
 /******/ ]);
+});
 //# sourceMappingURL=dist.js.map

@@ -1,21 +1,11 @@
-// # Literate documentation for NPM modules
+// # Literate JavaScript Documentation
 //
-// Automatically generate documentation from a literate NPM module.
+// Automatically generate documentation from a literate code module.
+// Just add `<script src=https://unpkg.com/ldoc></script>` to a html file,
+// and it will load `./package.json`, find the `ldoc` or `main` property,
+// and render that as intermixed markdown and source code, - like this document.
 //
-// I.e. to make a webpage for the module `solsort-util`, write the code as literate code, and add a html-file like:
-// ```
-// <!DOCTYPE html>
-// <html>
-//   <body>
-//     <script src=https://unpkg.com/ldoc></script>
-//     <script>ldoc('solsort-util');</script>
-//   </body>
-// </html>
-//
-// ```
-//
-// ## Actual source code
-//
+
 import {Converter} from 'showdown';
 
 let style = `<style>
@@ -31,19 +21,15 @@ pre,code {
 pre {
   margin: 2ex 0ex 2ex 0ex;
 }
-</style>`
+</style>`;
 
-window.ldoc = async function(moduleName, elem) {
-  if(!elem) {
-    elem = document.createElement('div');
-    document.body.appendChild(elem);
-  }
+(async () => {
 
-  async function unpkg(file) {
+  let elem = document.createElement('div');
+  document.body.appendChild(elem);
+
+  async function get(file) {
     try {
-      if(moduleName) {
-        file = 'https://unpkg.com/' + moduleName + '/' + file
-      }
       file = await fetch(file);
       return await file.text();
     } catch(e) {
@@ -51,9 +37,9 @@ window.ldoc = async function(moduleName, elem) {
     }
   }
 
-  var pkg = JSON.parse(await unpkg('package.json'));
-  var travis = await unpkg('.travis.yml');
-  var mainSrc = await unpkg(pkg.main);
+  var pkg = JSON.parse(await get('package.json'));
+  var travis = await get('.travis.yml');
+  var mainSrc = await get(pkg.ldoc || pkg.main);
   mainSrc = ('\n' + mainSrc).replace(
     /\n/g, '\n    '
   )
@@ -67,6 +53,6 @@ window.ldoc = async function(moduleName, elem) {
   //console.log(pkg, html);
 
   elem.innerHTML = html;
-}
+})();
 
 
