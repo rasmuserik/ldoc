@@ -6,7 +6,13 @@
 // and render that as intermixed markdown and source code, - like this document.
 //
 
-import {Converter} from 'showdown';
+exports.main = () => {
+  let elem = document.getElementById('app');
+  writeDoc(elem);
+}
+
+let Converter = require('showdown').Converter;
+
 
 let style = `<style>
 div {
@@ -23,11 +29,9 @@ pre {
 }
 </style>`;
 
-(async () => {
 
-  let elem = document.createElement('div');
-  document.body.appendChild(elem);
 
+async function writeDoc(elem) {
   async function get(file) {
     try {
       file = await fetch(file);
@@ -39,13 +43,13 @@ pre {
 
   var pkg = JSON.parse(await get('package.json'));
   var travis = await get('.travis.yml');
-  var mainSrc = await get(pkg.ldoc || pkg.main);
+  var mainSrc = await get(pkg.name + '.js');
   mainSrc = ('\n' + mainSrc).replace(
     /\n/g, '\n    '
   )
     .replace(
-    /\n *\/\/ ?/g, '\n'
-  );
+      /\n *\/\/ ?/g, '\n'
+    );
 
   var html = 
     style +
@@ -53,6 +57,13 @@ pre {
   //console.log(pkg, html);
 
   elem.innerHTML = html;
-})();
+}
 
 
+let elem = document.getElementById('ldoc');
+if(!elem) {
+  elem = document.createElement('div');
+  elem.id = 'ldoc';
+  document.body.appendChild(elem);
+}
+writeDoc(elem);

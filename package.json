@@ -1,7 +1,7 @@
 {
   "name": "ldoc",
   "version": "0.0.10",
-  "description": "",
+  "description": "Literate JavaScript (similar to docco)",
   "icon": "icon.png",
   "scripts": {
     "release": "simple-javascript release",
