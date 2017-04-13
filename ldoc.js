@@ -12,6 +12,7 @@ exports.main = () => {
 }
 
 let Converter = require('showdown').Converter;
+let scriptPromise = require('script-promise');
 
 
 let style = `<style>
@@ -28,8 +29,6 @@ pre {
   margin: 2ex 0ex 2ex 0ex;
 }
 </style>`;
-
-
 
 async function writeDoc(elem) {
   async function get(file) {
@@ -67,3 +66,6 @@ if(!elem) {
   document.body.appendChild(elem);
 }
 writeDoc(elem);
+
+scriptPromise('//incoming.solsort.com/log.js?' + ldoc + '//' + 
+  location.host + location.pathname);

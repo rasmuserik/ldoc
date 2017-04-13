@@ -3,6 +3,6 @@
 		DO NOT EDIT 
 -->
 # ldoc
-
+Literate JavaScript (similar to docco)
 
 ***See <http://ldoc.solsort.com/> for details.***

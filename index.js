@@ -3,5 +3,5 @@
 // DO NOT EDIT
 //
 let app = require('./ldoc');
-module.hot && module.hot.accept('./ldoc', render);
+module.hot && module.hot.accept('./ldoc', app.main);
 if(require.main === module) app.main();
