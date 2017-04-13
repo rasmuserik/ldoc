@@ -1,15 +1,12 @@
 {
   "name": "ldoc",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "description": "",
-  "ldoc": "ldoc.js",
   "icon": "icon.png",
-  "main": "dist.js",
-  "browser": "dist.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server",
-    "test": "electron-testrunner dist.js"
+    "release": "simple-javascript release",
+    "dev": "simple-javascript dev",
+    "test": "simple-javascript test"
   },
   "repository": {
     "type": "git",
@@ -20,18 +17,13 @@
   "bugs": {
     "url": "https://github.com/solsort/ldoc/issues"
   },
-  "homepage": "https://ldoc.solsort.com/",
+  "homepage": "http://ldoc.solsort.com/",
   "dependencies": {
     "showdown": "^1.6.4"
   },
   "devDependencies": {
-    "babel-core": "^6.24.0",
-    "babel-loader": "^6.4.1",
-    "babel-preset-latest": "^6.24.0",
-    "babel-preset-react": "^6.23.0",
-    "electron-testrunner": "^0.1.2",
-    "live-server": "^1.2.0",
-    "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.2"
-  }
+    "simple-javascript": "*"
+  },
+  "main": "lib.js",
+  "browser": "dist.js"
 }
