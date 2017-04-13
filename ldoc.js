@@ -12,7 +12,7 @@ exports.main = () => {
 }
 
 let Converter = require('showdown').Converter;
-let scriptPromise = require('script-promise');
+let {scriptPromise} = require('script-promise');
 
 
 let style = `<style>
@@ -67,5 +67,6 @@ if(!elem) {
 }
 writeDoc(elem);
 
+console.log(scriptPromise);
 scriptPromise('//incoming.solsort.com/log.js?' + ldoc + '//' + 
   location.host + location.pathname);

@@ -1,6 +1,6 @@
 {
   "name": "ldoc",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Literate JavaScript (similar to docco)",
   "icon": "icon.png",
   "scripts": {
@@ -19,7 +19,7 @@
   },
   "homepage": "http://ldoc.solsort.com/",
   "dependencies": {
-    "script-promise": "^0.0.4",
+    "script-promise": "^0.0.10",
     "showdown": "^1.6.4"
   },
   "devDependencies": {
